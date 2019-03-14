@@ -8,6 +8,7 @@
 
 #include "CPlusCodeTest.hpp"
 
+
 class NumArray {
 public:
     
@@ -21,6 +22,7 @@ public:
         }
         return 1;
     }
+    
 };
 
 class CPlusSolution {

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		800B80EE20328DED00B1C896 /* CPlusCodeTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 800B80EC20328DED00B1C896 /* CPlusCodeTest.cpp */; };
 		800B80F1203D120C00B1C896 /* OCCodeTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 800B80F0203D120C00B1C896 /* OCCodeTest.mm */; };
+		80B216CE21DF46730017C245 /* BaseDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B216CD21DF46730017C245 /* BaseDefine.swift */; };
+		80B216D021E06C4F0017C245 /* TreeSolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B216CF21E06C4F0017C245 /* TreeSolution.swift */; };
 		80F759041FB32E4F00A17FCE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F759031FB32E4F00A17FCE /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,8 @@
 		800B80ED20328DED00B1C896 /* CPlusCodeTest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CPlusCodeTest.hpp; sourceTree = "<group>"; };
 		800B80EF203D120C00B1C896 /* OCCodeTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCCodeTest.h; sourceTree = "<group>"; };
 		800B80F0203D120C00B1C896 /* OCCodeTest.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OCCodeTest.mm; sourceTree = "<group>"; };
+		80B216CD21DF46730017C245 /* BaseDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDefine.swift; sourceTree = "<group>"; };
+		80B216CF21E06C4F0017C245 /* TreeSolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeSolution.swift; sourceTree = "<group>"; };
 		80F759001FB32E4F00A17FCE /* SwiftCodeTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftCodeTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80F759031FB32E4F00A17FCE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +68,8 @@
 			isa = PBXGroup;
 			children = (
 				80F759031FB32E4F00A17FCE /* main.swift */,
+				80B216CD21DF46730017C245 /* BaseDefine.swift */,
+				80B216CF21E06C4F0017C245 /* TreeSolution.swift */,
 				800B80EF203D120C00B1C896 /* OCCodeTest.h */,
 				800B80F0203D120C00B1C896 /* OCCodeTest.mm */,
 				800B80EC20328DED00B1C896 /* CPlusCodeTest.cpp */,
@@ -132,6 +138,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				800B80EE20328DED00B1C896 /* CPlusCodeTest.cpp in Sources */,
+				80B216CE21DF46730017C245 /* BaseDefine.swift in Sources */,
+				80B216D021E06C4F0017C245 /* TreeSolution.swift in Sources */,
 				800B80F1203D120C00B1C896 /* OCCodeTest.mm in Sources */,
 				80F759041FB32E4F00A17FCE /* main.swift in Sources */,
 			);
