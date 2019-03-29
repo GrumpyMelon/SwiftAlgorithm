@@ -8,82 +8,53 @@
 
 import Foundation
 
-class PriorityHeap {
-    //最大堆
-    var arr: [Int]
-    init() {
-        arr = [Int]()
-    }
-    func append(_ element: Int) -> Void {
-        arr.insert(element, at: 0)
-        heapAdjust()
-    }
-    func heapAdjust() -> Void {
-        var i = 0
-        while i < arr.count / 2 {
-            let child1 = i * 2 + 1, child2 = i * 2 + 2
-            
-        }
-    }
-}
+//179 - Given a list of non negative integers, arrange them such that they form the largest number.
+//
+//Example 1:
+//
+//Input: [10,2]
+//Output: "210"
+//Example 2:
+//
+//Input: [3,30,34,5,9]
+//Output: "9534330"
+//Note: The result may be very large, so you need to return a string instead of an integer.
 
 class Solution {
-    func mincostToHireWorkers(_ quality: [Int], _ wage: [Int], _ K: Int) -> Double {
-        if quality.count == 0 || wage.count == 0 || K == 0 || quality.count != wage.count || quality.count < K{
-            return 0
-        }
-        var result: Double = Double(Int.max)
-        var tupleArray = [(Double, Int)]()
-        for i in 0 ..< quality.count {
-            tupleArray.append((Double(wage[i]) / Double(quality[i]), quality[i]))
-        }
-        tupleArray.sort { (a, b) -> Bool in
-            return a.0 < b.0
-        }
-        var qualitySum = 0
-        var tempArray = [Int]()
-        for (wq, quality) in tupleArray {
-            if tempArray.count == K {
-                qualitySum -= tempArray.removeFirst()
-            }
-            qualitySum += quality
-            tempArray.append(quality)
-            tempArray.sort(by: >)
-            if tempArray.count == K {
-                result = min(result, wq * Double(qualitySum))
-            }
-        }
-        return result
-    }
-    
-    func subarraySum(_ nums: [Int], _ k: Int) -> Int {
+    func largestNumber(_ nums: [Int]) -> String {
         if nums.count == 0 {
-            return 0
+            return ""
         }
-        var result = 0
-        var tempDict = Dictionary<Int, Int>()
-        var tempArr = [Int]()
-        tempArr.append(0)
+//        let strArray = nums.map{"\($0)"}
+        let strArray = nums.map{String($0)}
+//        let strArray = nums.map { (a) -> String in
+//            "\(a)"
+//        }
+        print(strArray);
+        let nums = nums.sorted { (a, b) -> Bool in
+            let strA = String(a)
+            let strB = String(b)
+            return Int(strA + strB)! > Int(strB + strA)!
+        }
+
+        var result: String = String();
         for num in nums {
-            tempArr.append(tempArr.last! + num)
-        }
-        for num in tempArr {
-            if tempDict[num - k] != nil {
-                result += tempDict[num - k]!
+            if result.count == 0 && num == 0 {
+                continue;
             }
-            if tempDict[num] == nil {
-                tempDict[num] = 1
-            } else {
-                tempDict[num] = tempDict[num]! + 1
-            }
+            result += String(num)
         }
-        return result
+        if result.count == 0 {
+            return "0"
+        } else {
+            return result;
+        }
     }
 }
 
 func main() {
-//    var pre = [1,8,6,2,5,4,8,3,7]
-    var pre = [1,2,5,-2,-5,0,0,-1]
+    var pre = [3,30,34,5,9]
+//    var pre = [1,2,5,-2,-5,0,0,-1]
 //    let island = [[0,1,0,0],[1,0,0,0],[0,0,0,1],[0,0,1,0]]
 //    let triangle = [[2],[3,4],[6,5,7],[4,1,8,3]];
 //    let quality = [10,20,5], wage = [70,50,30], K = 2
@@ -92,7 +63,7 @@ func main() {
 //    let list = linkListCreater(pre)
     let solution = Solution();
 //    let result = solution.mincostToHireWorkers(quality, wage, K)
-    let result = solution.subarraySum(pre, 0)
+    let result = solution.largestNumber(pre)
     print(result)
     //前序
 //    let pre = [1,2,4,5,3,6,7]
