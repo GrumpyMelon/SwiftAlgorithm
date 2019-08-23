@@ -8,63 +8,83 @@
 
 import Foundation
 
-//179 - Given a list of non negative integers, arrange them such that they form the largest number.
-//
-//Example 1:
-//
-//Input: [10,2]
-//Output: "210"
+使用DP思路优化下。
+//838 dominoes
+
+//Input: ".L.R...LR..L.."
+//Output: "LL.RR.LLRRLL.."
 //Example 2:
 //
-//Input: [3,30,34,5,9]
-//Output: "9534330"
-//Note: The result may be very large, so you need to return a string instead of an integer.
+//Input: "RR.L"
+//Output: "RR.L"
+//Explanation: The first domino expends no additional force on the second domino.
+
 
 class Solution {
-    func largestNumber(_ nums: [Int]) -> String {
-        if nums.count == 0 {
+    func pushDominoes(_ dominoes: String) -> String {
+        if dominoes.count == 0 {
             return ""
         }
-//        let strArray = nums.map{"\($0)"}
-        let strArray = nums.map{String($0)}
-//        let strArray = nums.map { (a) -> String in
-//            "\(a)"
-//        }
-        print(strArray);
-        let nums = nums.sorted { (a, b) -> Bool in
-            let strA = String(a)
-            let strB = String(b)
-            return Int(strA + strB)! > Int(strB + strA)!
+        var array = Array(dominoes)
+        var lastDmoninoes = (index:-1, char: Character("."))
+        var startIndex = 0
+        for (index, char) in array.enumerated() {
+            if char != Character(".") {
+                startIndex = index + 1
+                lastDmoninoes = (index, char);
+                if char == Character("L") {
+                    for i in 0 ..< index {
+                        array[i] = char
+                    }
+                }
+                break;
+            }
         }
-
-        var result: String = String();
-        for num in nums {
-            if result.count == 0 && num == 0 {
+        for index in startIndex ..< array.count {
+            let char = array[index]
+            if char == Character(".") {
                 continue;
             }
-            result += String(num)
+            
+            if lastDmoninoes.char == char {
+                for i in lastDmoninoes.index + 1 ..< index {
+                    array[i] = char
+                }
+            } else {
+                if lastDmoninoes.char == Character("L") {
+                    //一左一右，中间的不管。
+                } else {
+                    for i in lastDmoninoes.index + 1 ..< (lastDmoninoes.index + (index - lastDmoninoes.index - 1) / 2) + 1 {
+                        array[i] = lastDmoninoes.char
+                        let j = index - i + lastDmoninoes.index
+                        array[j] = char
+                    }
+                }
+                
+            }
+
+            lastDmoninoes = (index, char)
         }
-        if result.count == 0 {
-            return "0"
-        } else {
-            return result;
+        if lastDmoninoes.char == Character("R"){
+            for i in lastDmoninoes.index + 1 ..< array.count {
+                array[i] = lastDmoninoes.char
+            }
         }
+        
+        return String(array);
     }
 }
 
 func main() {
-    var pre = [3,30,34,5,9]
-//    var pre = [1,2,5,-2,-5,0,0,-1]
-//    let island = [[0,1,0,0],[1,0,0,0],[0,0,0,1],[0,0,1,0]]
-//    let triangle = [[2],[3,4],[6,5,7],[4,1,8,3]];
-//    let quality = [10,20,5], wage = [70,50,30], K = 2
-//var pre = [2,1]
-//    let node = treeCreater(island)
-//    let list = linkListCreater(pre)
     let solution = Solution();
-//    let result = solution.mincostToHireWorkers(quality, wage, K)
-    let result = solution.largestNumber(pre)
+//    let cells =  [9,4,2,10,7,8,8,1,9]
+   
+//    let words = ["me", "time", "haha"]
+//    let result = solution.pushDominoes(".L.R...LR..L..")
+    let result = solution.pushDominoes("L...")
+    
     print(result)
+    
     //前序
 //    let pre = [1,2,4,5,3,6,7]
 //    //中
